@@ -34,8 +34,33 @@
 			}
 			return -1;
 		}
+		function interpolationSearch(arrayToSearch, valueToSearch){
+  			var length = arrayToSearch.length;
+  			var low = 0;
+  			var high = length-1;
+  			var position = -1;
+  			var delta = -1;
+  			while(low <= high 
+        		&& valueToSearch >= arrayToSearch[low]
+        		&& valueToSearch <= arrayToSearch[high]){
+
+    				delta = (valueToSearch-arrayToSearch[low])/(arrayToSearch[high]-arrayToSearch[low]);
+    				position = low + Math.floor((high-low)*delta);
+    				if (arrayToSearch[position] == valueToSearch){
+      					console.log('tồn tại vị trí '+ position);
+    				}
+    			if (arrayToSearch[position] < valueToSearch){
+      				low = position + 1;
+    			} else {
+      				high = position - 1;
+    			}
+  			}
+ 
+  			return -1;
+		}
 		linearSearch(a,5);
 		binarySearch(a,3);
+		interpolationSearch(a,3);
 	</script>
 </body>
 </html>
